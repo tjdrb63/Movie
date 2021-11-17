@@ -23,10 +23,10 @@
                                     Dashboard
                                 </jet-nav-link>
                                 <jet-nav-link :href="route('showmain')" :active="route().current('showmain')">
-                                    영화 목록
+                                    최근 평가 목록
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    내 정보
+                                <jet-nav-link :href="route('showsearch')" :active="route().current('showsearch')">
+                                    영화 검색하기
                                 </jet-nav-link>
 
                             </div>

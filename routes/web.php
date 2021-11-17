@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/main',[PostController::class,'ShowMain'])->name('showmain');
+Route::get('/search',[PostController::class,'ShowSearch'])->name('showsearch');
+Route::get('/search/{searchword}',[PostController::class,'SearchNow']);
+Route::get('/search/api/{searchword}',[ApiController::class,'NaverApiCall']);
+Route::get('/room/{room_id}',[PostController::class,'ShowRoom']);
+
+Route::post('/make/room',[PostController::class,'MakeRoom']);
+Route::post('/room/info/{room_id}',[PostController::class,'RoomInfo']);
+Route::post('/search/api/room',[ApiController::class,'CheckRoom']);
+Route::post('/main/show/movie',[PostController::class,'MainShowMovie']);

@@ -21223,7 +21223,72 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.MainShowMovie();
-  }
+  } //   <div>
+  //         <div>
+  //             <div class='flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+  //                 <div class='w-2 bg-gray-800'></div>
+  //         <div class="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card" data-movie-id="438631">
+  //             <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+  //             <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info" data-lity="" href="https://www.youtube.com/embed/aSHs224Dge0">
+  //                 <div class="poster__info align-self-end w-full">
+  //                     <div class="h-32"></div>
+  //                     <div class="space-y-6 detail_info">
+  //                         <div class="flex flex-col space-y-2 inner">
+  //                             <a class="relative flex items-center w-min flex-shrink-0 p-1 text-center text-white bg-red-500 rounded-full group-hover:bg-red-700" data-unsp-sanitized="clean">
+  //                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 20 20" fill="currentColor">
+  //                                     <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.555 7.168A1 1 0 0 0 8 8v4a1 1 0 0 0 1.555.832l3-2a1 1 0 0 0 0-1.664l-3-2z" clip-rule="evenodd"></path>
+  //                                 </svg>
+  //                                 <div class="absolute transition opacity-0 duration-500 ease-in-out transform group-hover:opacity-100 group-hover:translate-x-16 text-xl font-bold text-white group-hover:pr-2">Trailer</div>
+  //                             </a>
+  //                             <h3 class="text-2xl font-bold text-white" data-unsp-sanitized="clean">Dune</h3>
+  //                             <div class="mb-0 text-lg text-gray-400">Beyond fear, destiny awaits.</div>
+  //                         </div>
+  //                         <div class="flex flex-row justify-between datos">
+  //                             <div class="flex flex-col datos_col">
+  //                                 <div class="popularity">440.052</div>
+  //                                 <div class="text-sm text-gray-400">Popularity:</div>
+  //                             </div>
+  //                             <div class="flex flex-col datos_col">
+  //                                 <div class="release">2021-09-15</div>
+  //                                 <div class="text-sm text-gray-400">Release date:</div>
+  //                             </div>
+  //                             <div class="flex flex-col datos_col">
+  //                                 <div class="release">155 min</div>
+  //                                 <div class="text-sm text-gray-400">Runtime:</div>
+  //                             </div>
+  //                         </div>
+  //                         <div class="flex flex-col overview">
+  //                             <div class="flex flex-col"></div>
+  //                             <div class="text-xs text-gray-400 mb-2">Overview:</div>
+  //                             <p class="text-xs text-gray-100 mb-6">
+  //                                 Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As
+  //                                 malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their
+  //                                 fear will survive.
+  //                             </p>
+  //                         </div>
+  //                     </div>
+  //                     <div data-countdown="2021-09-15" class="absolute inset-x-0 top-0 pt-5 w-full mx-auto text-2xl uppercase text-center drop-shadow-sm font-bold text-white">00 Days 00:00:00</div>
+  //                 </div>
+  //             </div>
+  //             <img class="absolute inset-0 transform w-full -translate-y-4" src="http://image.tmdb.org/t/p/w342/s1FhMAr91WL8D5DeHOcuBELtiHJ.jpg" style="filter: grayscale(0);" />
+  //             <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
+  //                 <a
+  //                     class="flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
+  //                     href="http://www.google.com/calendar/event?action=TEMPLATE&amp;dates=20210915T010000Z%2F20210915T010000Z&amp;text=Dune%20%2D%20Movie%20Premiere&amp;location=http%3A%2F%2Fmoviedates.info&amp;details=This%20reminder%20was%20created%20through%20http%3A%2F%2Fmoviedates.info"
+  //                     target="_blank"
+  //                     data-unsp-sanitized="clean"
+  //                 >
+  //                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  //                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  //                     </svg>
+  //                     <div class="text-sm text-white ml-2">Set reminder</div>
+  //                 </a>
+  //             </div>
+  //         </div>
+  //             </div>
+  //         </div>
+  //     </div>
+
 });
 
 /***/ }),
@@ -21239,24 +21304,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Jetstream_DialogModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Jetstream/DialogModal.vue */ "./resources/js/Jetstream/DialogModal.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['room_id'],
+  components: {
+    DialogModal: _Jetstream_DialogModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: ['data'],
   data: function data() {
     return {
-      movie: ""
+      movie: "",
+      showmodal: false,
+      comment_rating: "",
+      comment_content: "",
+      comments: ""
     };
   },
   methods: {
-    RoomInfo: function RoomInfo() {
+    close: function close() {
+      this.showmodal = false;
+    },
+    show: function show() {
+      this.showmodal = true;
+    },
+    PostComment: function PostComment() {
+      axios.post('/post/comment/' + this.data, {
+        'comment_rating': this.comment_rating,
+        'comment_content': this.comment_content
+      }).then(function (res) {
+        console.log("성공적으로 전송");
+      });
+    },
+    CommentInfo: function CommentInfo() {
       var _this = this;
 
-      axios.post('/room/info/' + this.room_id).then(function (res) {
+      axios.post('/comment/info/' + this.data).then(function (res) {
+        _this.comments = res.data;
+      });
+    },
+    RoomInfo: function RoomInfo() {
+      var _this2 = this;
+
+      axios.post('/room/info/' + this.data).then(function (res) {
+        console.log(res);
         console.log("방정보 돌아옴.");
-        _this.movie = res.data;
+        _this2.movie = res.data;
       });
     }
   },
   created: function created() {
+    this.CommentInfo();
     this.RoomInfo();
   }
 });
@@ -21288,6 +21385,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    ShowComment: function ShowComment($res) {
+      console.log($res);
+      axios.post('/show/room/' + $res.title).then(function (res) {
+        console.log(res.data);
+        window.location.href = "/room/" + res.data.id;
+      });
+    },
     search: function search() {
       if (this.data) window.location.href = "/search/" + this.data;else alert("검색어를 입력해주세요");
     },
@@ -25919,8 +26023,198 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "min-h-screen bg-gray-300 py-6 flex flex-col justify-center sm:py-12 font-apple-system"
+};
+var _hoisted_2 = {
+  "class": "py-3 sm:max-w-4xl sm:mx-auto"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-gray-700 sm:rounded-3xl mb-1 p-6 flex text-white font-semibold text-3xl"
+}, " 영화 소개 ", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  "class": "bg-white shadow-lg border-gray-100 border sm:rounded-3xl p-8 flex space-x-8"
+};
+var _hoisted_5 = {
+  "class": "w-100"
+};
+var _hoisted_6 = ["src"];
+var _hoisted_7 = {
+  "class": "flex flex-col w-1/2 space-y-4"
+};
+var _hoisted_8 = {
+  "class": "flex justify-between items-start"
+};
+var _hoisted_9 = {
+  "class": "text-3xl font-bold"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  "class": "bg-green-400 font-bold rounded-xl p-2 ml-2 mr-1"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bg-yellow-400 font-bold rounded-xl p-2"
+}, "7.45", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "text-sm text-gray-400"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-sm text-gray-400"
+}, "개봉일자", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "text-lg text-gray-800"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-sm text-gray-400"
+}, "등장인물", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "text-gray-800 max-h-40 overflow-y-hidden"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-sm text-gray-400"
+}, "감독", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "text-lg text-gray-800"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-white border-gray-100 sm:rounded-3xl p-8 space-x-8 mt-2\"><!-- 댓글 --><div class=\"bg-gray-200 rounded-lg p-3 flex flex-col justify-center items-center md:items-start shadow-lg mb-4\"><div class=\"flex flex-row justify-center mr-2\"><img alt=\"avatar\" width=\"48\" height=\"48\" class=\"rounded-full w-10 h-10 mr-4 shadow-lg mb-4\" src=\"https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png\"><h3 class=\"text-purple-600 font-semibold text-lg text-center md:text-left\">@Shanel</h3></div><p style=\"width:90%;\" class=\"text-gray-600 text-lg text-center md:text-left\">이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요이영화 정말 좋아요 </p></div></div>", 1);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "h-96"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_22 = {
+  "class": "max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12"
+};
+var _hoisted_23 = {
+  "class": "bg-white w-full shadow-lg rounded p-8 sm:p-12 -mt-72"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-3xl font-bold leading-7 text-center"
+}, "리뷰 남기기", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = {
+  "class": "md:flex items-center mt-8"
+};
+var _hoisted_26 = {
+  "class": "w-full flex flex-col"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "font-semibold leading-none"
+}, "평점칸", -1
+/* HOISTED */
+);
+
+var _hoisted_28 = {
+  "class": "w-full flex flex-col mt-8"
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "font-semibold leading-none"
+}, "리뷰 내용", -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  "class": "flex items-center space-x-8 justify-center w-full"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, " 댓글목록 보여주기 ");
+  var _component_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("dialog-modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 타이틀바 "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 영화소개 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    "class": "rounded-3xl shadow-lg",
+    src: "".concat($data.movie.image_path),
+    alt: "image"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.title), 1
+  /* TEXT */
+  ), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.userRating), 1
+  /* TEXT */
+  ), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.subtitle), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.pubDate), 1
+  /* TEXT */
+  )]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.actor), 1
+  /* TEXT */
+  ), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.movie.director), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 댓글 구간 "), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 댓글 버튼 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.show();
+    }),
+    type: "button",
+    "class": "w-full border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
+  }, " 리뷰 남기러 가기 ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dialog_modal, {
+    show: $data.showmodal
+  }, {
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $data.comment_rating = $event;
+        }),
+        type: "text",
+        "class": "leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.comment_rating]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $data.comment_content = $event;
+        }),
+        type: "text",
+        "class": "h-40 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.comment_content]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: _cache[3] || (_cache[3] = function ($event) {
+          return $options.PostComment();
+        }),
+        "class": "mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none"
+      }, " 작성하기 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: _cache[4] || (_cache[4] = function ($event) {
+          return $options.close();
+        }),
+        "class": "mt-9 font-semibold leading-none text-white py-4 px-10 bg-red-700 rounded hover:bg-red-600 focus:ring-2 focus:ring-offset-2 focus:ring-red-700 focus:outline-none"
+      }, " 나가기 ")])])])])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"])], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -25993,6 +26287,7 @@ var _hoisted_15 = {
   "class": "px-4 py-3 text-xs border"
 };
 var _hoisted_16 = ["onClick"];
+var _hoisted_17 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -26032,11 +26327,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [movie.isOn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
           key: 0,
-          onClick: _cache[2] || (_cache[2] = function () {
-            return _ctx.ShowComment && _ctx.ShowComment.apply(_ctx, arguments);
-          }),
+          onClick: function onClick($event) {
+            return $options.ShowComment(movie);
+          },
           "class": "px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
-        }, " 리뷰방 보러가기 ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+        }, " 리뷰방 보러가기 ", 8
+        /* PROPS */
+        , _hoisted_16)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
           key: 1,
           onClick: function onClick($event) {
             return $options.MakeRoom(movie);
@@ -26044,7 +26341,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-sm"
         }, " 등록된 평점 없음 ", 8
         /* PROPS */
-        , _hoisted_16))])])]);
+        , _hoisted_17))])])]);
       }), 128
       /* KEYED_FRAGMENT */
       ))])])];

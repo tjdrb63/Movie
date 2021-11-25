@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -23,7 +26,8 @@ class PostController extends Controller
 
     }
     public function RoomInfo($room_id){
-
+        $movie = Movie::find($room_id);
+        return $movie;
     }
     public function MakeRoom(Request $request){
         $movie = new Movie;
@@ -37,6 +41,18 @@ class PostController extends Controller
         $movie -> save();
 
         return $movie -> id;
+    }
+    public function PostComment(Request $request,$room_id){
+        $comment = new Comment;
+        $comment -> user_id = Auth::id();
+        $comment -> movie_id = $room_id;
+        $comment -> comment = $request ->comment_content;
+        $comment -> rating = $request ->comment_rating;
+        $comment -> save();
+    }
+    public function PostShowRoom($movie_title){
+        $movie = DB::table('movies')->where('title',"=",$movie_title)->first();
+        return $movie;
     }
     public function MainShowMovie(){
         $movies = DB::table('movies')->orderBy('updated_at','desc')->take(10)->get();

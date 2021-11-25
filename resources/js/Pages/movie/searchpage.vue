@@ -33,7 +33,7 @@
                                 {{ movie.pubDate }}
                             </td>
                             <td class="px-4 py-3 text-xs border">
-                                <span v-if="movie.isOn" v-on:click="ShowComment" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> 리뷰방 보러가기 </span>
+                                <span v-if="movie.isOn" v-on:click="ShowComment(movie)" class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> 리뷰방 보러가기 </span>
                                 <span v-else v-on:click="MakeRoom(movie)" class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-sm"> 등록된 평점 없음 </span>
                             </td>
                         </tr>
@@ -58,6 +58,14 @@ export default {
         }
     },
     methods:{
+        ShowComment($res){
+            console.log($res)
+            axios.post('/show/room/'+$res.title)
+            .then(res=>{
+                console.log(res.data)
+                window.location.href="/room/"+res.data.id
+            })
+        },
         search(){
             if(this.data)
                 window.location.href="/search/"+this.data

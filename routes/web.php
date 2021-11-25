@@ -36,6 +36,9 @@ Route::get('/search/{searchword}',[PostController::class,'SearchNow']);
 Route::get('/search/api/{searchword}',[ApiController::class,'NaverApiCall']);
 Route::get('/room/{room_id}',[PostController::class,'ShowRoom']);
 
+
+Route::post('/post/comment/{room_id}',[PostController::class,'PostComment']);
+Route::post('/show/room/{movie_title}',[PostController::class,'PostShowRoom']);
 Route::post('/make/room',[PostController::class,'MakeRoom']);
 Route::post('/room/info/{room_id}',[PostController::class,'RoomInfo']);
 Route::post('/search/api/room',[ApiController::class,'CheckRoom']);

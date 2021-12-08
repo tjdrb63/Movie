@@ -2,12 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use Google\Cloud\Vision\VisionClient;
+use Google\Cloud\Vision\Image;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Foreach_;
 
 class ApiController extends Controller
 {
+    public function TextApiCall(Request $request){
+        $validated = $request -> validate([
+            'file' => ['required','image'],
+        ]);
+
+
+        // $base64 = base64_encode($request->file("file"));
+        $vision = new VisionClient(['keyFilePath' => 'C:\noble-triode-334307-d207eb70bc10.json']);
+        $imageResource = fopen($request->file("file"), 'r');
+        $image = $vision -> Image($imageResource, ['DOCUMENT_TEXT_DETECTION']);
+        $annotation = $vision->annotate($image);
+        $document = $annotation->fullText();
+        $info = $document -> info();
+
+        foreach($info as $value){
+            $text = $value;
+        }
+
+
+            if(str_contains($text,$request->title))
+                return "확인완료";
+            else
+                return "확인불가";
+
+
+
+    }
     // public function CheckRoom(Request $request){
 
     //     $movies = $request-> movies;
@@ -56,8 +86,6 @@ class ApiController extends Controller
                     $json->items[$i]->isOn=true;
                 else
                     $json->items[$i]->isOn=false;
-
-
 
             }
             //     $movie  = new Movie;

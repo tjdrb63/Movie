@@ -20,7 +20,9 @@ class CreateMoviesTable extends Migration
             $table->string('pubDate')->nullable();
             $table->string("director")->nullable();
             $table->string("actor")->nullable();
-            $table->string("userRating")->nullable();
+            $table->integer("userRating")->nullable();
+            $table->integer("totalRating")->nullable();
+            $table->integer("ratingCount")->nullable();
             $table->string("image_path")->nullable();
             $table->timestamps();
         });

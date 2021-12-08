@@ -1,42 +1,240 @@
 <template>
-    <app-layout>
-    <div>
-        <h1>최근 평가된 영화</h1>
-        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-            <div v-for="movie in movies" :key="movie" class="rounded overflow-hidden shadow-lg w-29">
-                <img class="w-full" :src="`${movie.image_path}`" alt="Movie Image">
-                <p>제목 : {{movie.title}}</p>
-                <p>네이버 평점 ★ 3.04</p>
+    <div id="page-wrapper">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo container">
+                <div>
+                    <h1><a href="index.html" id="logo">Main Page</a></h1>
+                    <p></p>
+                </div>
             </div>
-        </div>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li class="current"><a href="index.html">메인페이지</a></li>
+                <li><a href="search">영화 검색</a></li>
+                <li><a href="">내 정보</a></li>
+            </ul>
+        </nav>
+        <!-- Banner -->
+        <section id="banner">
+            <div class="content">
+                <h2>Movie Review</h2>
+                <p>실제 관람객에 의한 영화 리뷰</p>
+                <!-- <a href="#main" class="button scrolly">Alright let's go</a> -->
+            </div>
+        </section>
+
+        <!-- Main -->
+        <section id="main">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-12">
+                        <!-- Highlight -->
+                    </div>
+                    <div class="col-12">
+                        <!-- Features -->
+                        <section class="box features">
+                            <h2 class="major"><span>최근 생성된 영화</span></h2>
+                            <div>
+                                <carousel :items-to-show="3.5" :autoplay="3000" :wrapAround="true">
+                                    <slide v-for="movie in movies" :key="movie">
+                                        <div class="w-100">
+                                            <div class="m-2 shadow-lg border-gray-800 bg-gray-200 relative">
+                                                <img :src="`${movie.image_path}`" alt="" />
+                                                <div class="badge absolute top-0 right-0 bg-red-500 m-1 text-gray-200 p-1 px-2 text-xs font-bold rounded">New</div>
+                                                <div class="absolute m-1 flex top-0 text-xs  font-semibold text-gray-700 ">
+                                                    <span class="rounded text-white bg-green-300 mr-1 p-1 font-bold">N {{movie.userRating}}</span>
+                                                </div>
+                                                <div class="py-4">
+                                                    <a @click="clickPoster(movie.title)" class="text-lg font-bold block"><h5>{{movie.title}}</h5></a>
+                                                    <h5 class="text-gray-500">{{movie.subtitle}}</h5>
+                                                    <div class="flex justify-center">
+                                                        <div v-for="star in stars" :key="star">
+                                                            <h4 v-if="(movie.totalRating/movie.ratingCount).toFixed(1) >= star" class="fas fa-star fa-lg text-yellow-500 mr-1"></h4>
+                                                            <h4 v-if="(movie.totalRating/movie.ratingCount).toFixed(1) < star" class="far fa-star fa-lg text-yellow-500 mr-1"></h4>
+                                                        </div>
+                                                        <h4 v-if="movie.totalRating == null"> 리뷰없음</h4>
+                                                        <!-- <h2 v-if="movie.totalRating" class="absolute font-bold">{{(movie.totalRating/movie.ratingCount).toFixed(1)}}</h2> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </slide>
+                                    <template $addons>
+                                        <navigation />
+                                        <pagination />
+                                    </template>
+                                </carousel>
+
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><a href="/search" class="button large">영화 검색 하러가기</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-12">
+                        <!-- Blog -->
+                        <section class="box blog">
+                            <h2 class="major"><span>최근 리뷰 </span></h2>
+                            <div>
+                                <div class="row">
+                                    <div class="col-9 col-12-medium">
+                                        <div class="content">
+                                            <!-- Featured Post -->
+                                            <article class="box post">
+                                                <header v-for="info in clickedComment.movie_info" :key="info">
+                                                    <h3 class="text-gray-600">{{info.title}}</h3>
+                                                    <p>{{ info.subtitle }}</p>
+                                                        <div class="flex mb-2">
+                                                            <div v-for="star in stars" :key="star">
+                                                                <li v-if="clickedComment.rating >= star" class="fas fa-star fa-sm text-yellow-500 mr-1"></li>
+                                                                <li v-if="clickedComment.rating < star" class="far fa-star fa-sm text-yellow-500 mr-1"></li>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-gray-500 break-words">
+                                                                {{ clickedComment.comment }}
+                                                            </p>
+                                                        </div>
+                                                        <ul class="meta">
+                                                            <li class="icon fa-clock">{{clickedComment.updated_at}}</li>
+                                                            <li class="icon fa-comments">{{info.ratingCount}}</li>
+                                                        </ul>
+                                                        <a v-bind:href="`/room/${info.id}`" class="button">전체 정보 보러가기</a>
+
+                                                </header>
+                                            </article>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-12-medium">
+                                        <div class="sidebar">
+                                            <!-- Archives -->
+                                            <ul class="divided">
+                                                <li v-for="comment in comments" :key="comment">
+                                                    <article class="box post-summary">
+                                                        <h3><li class="hover:text-gray-300" @click="changeComment(comment)">{{ comment.movie_info[0].title }}</li></h3>
+                                                        <li class="truncate">{{comment.comment}}</li>
+                                                        <div class="flex mt-1">
+                                                            <div v-for="star in stars" :key="star">
+                                                                <li v-if="comment.rating >= star" class="fas fa-star fa-sm text-yellow-500 mr-1"></li>
+                                                                <li v-if="comment.rating < star" class="far fa-star fa-sm text-yellow-500 mr-1"></li>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex mt-2 text-gray-500">
+                                                            <li class="icon fa-clock">{{comment.updated_at}}</li>
+                                                            <li class="icon fa-comments"><a v-bind:href="`/room/${comment.movie_info[0].id}`">{{comment.movie_info[0].ratingCount}}</a></li>
+                                                        </div>
+                                                    </article>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="container">
+                <div class="row gtr-200">
+                    <div class="col-12">
+
+                        <!-- About -->
+                        <section>
+                            <h2 class="major"><span>What's this about?</span></h2>
+                            <p>
+                                This is <strong>TXT</strong>, yet another free responsive site template designed by
+                                <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>.
+                                It's released under the
+                                <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel
+                                free to use it for
+                                whatever you're working on (personal or commercial), just be sure to give us credit for
+                                the design.
+                                That's basically it
+                            </p>
+                        </section>
+
+                    </div>
+                </div>
+                <!-- Copyright -->
+                <div id="copyright">
+                    <ul class="menu">
+                        <li>&copy; Untitled. All rights reserved</li>
+                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </footer>
     </div>
-    </app-layout>
 </template>
 
-
-
-
-
+<style>
+    @import './css/main.css';
+</style>
 
 <script>
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import axios from 'axios'
 import AppLayout from '../../Layouts/AppLayout.vue'
 export default {
   components: {
-      AppLayout
+      AppLayout,
+       Carousel,
+        Slide,
+        Pagination,
+        Navigation,
    },
     data(){
         return{
             movies:[],
-            search:''
+            comments:[],
+            search:'',
+            calRating:0,
+            nowTime:"00:00:00",
+            stars:[1,2,3,4,5],
+            clickedComment:[],
         }
     },
     methods:{
+        showComment(){
+            axios.post('show/comments')
+            .then(res=>{
+                console.log(res.data)
+                this.comments = res.data
+                this.clickedComment=this.comments[0]
+            })
+        },
+        changeComment($res){
+            this.clickedComment=$res
+        },
+        clickPoster($movie_title){
+            console.log($movie_title)
+            axios.post('/show/room/'+$movie_title)
+            .then(res=>{
+                console.log(res.data)
+                window.location.href="/room/"+res.data.id
+            })
+        },
         MainShowMovie(){
             console.log("영화 리스트 요청함")
             axios.post("main/show/movie")
             .then(res =>{
                 this.movies = res.data;
+
             })
         },
         NaverApiCall(){
@@ -45,79 +243,21 @@ export default {
             .then(res =>{
                 console.log(res);
             })
-
+        },
+        TextApiCall(){
+            console.log("Text api 요청보냄")
+            axios.post("api/call/text")
+            .then(res=>{
+                console.log(res);
+            })
         }
     },
     mounted(){
         this.MainShowMovie()
-    }
-//   <div>
-//         <div>
-//             <div class='flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
-//                 <div class='w-2 bg-gray-800'></div>
+        this.showComment()
+        // this.TextApiCall()
+    },
 
-//         <div class="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card" data-movie-id="438631">
-//             <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
-//             <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info" data-lity="" href="https://www.youtube.com/embed/aSHs224Dge0">
-//                 <div class="poster__info align-self-end w-full">
-//                     <div class="h-32"></div>
-//                     <div class="space-y-6 detail_info">
-//                         <div class="flex flex-col space-y-2 inner">
-//                             <a class="relative flex items-center w-min flex-shrink-0 p-1 text-center text-white bg-red-500 rounded-full group-hover:bg-red-700" data-unsp-sanitized="clean">
-//                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 20 20" fill="currentColor">
-//                                     <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9.555 7.168A1 1 0 0 0 8 8v4a1 1 0 0 0 1.555.832l3-2a1 1 0 0 0 0-1.664l-3-2z" clip-rule="evenodd"></path>
-//                                 </svg>
-//                                 <div class="absolute transition opacity-0 duration-500 ease-in-out transform group-hover:opacity-100 group-hover:translate-x-16 text-xl font-bold text-white group-hover:pr-2">Trailer</div>
-//                             </a>
-//                             <h3 class="text-2xl font-bold text-white" data-unsp-sanitized="clean">Dune</h3>
-//                             <div class="mb-0 text-lg text-gray-400">Beyond fear, destiny awaits.</div>
-//                         </div>
-//                         <div class="flex flex-row justify-between datos">
-//                             <div class="flex flex-col datos_col">
-//                                 <div class="popularity">440.052</div>
-//                                 <div class="text-sm text-gray-400">Popularity:</div>
-//                             </div>
-//                             <div class="flex flex-col datos_col">
-//                                 <div class="release">2021-09-15</div>
-//                                 <div class="text-sm text-gray-400">Release date:</div>
-//                             </div>
-//                             <div class="flex flex-col datos_col">
-//                                 <div class="release">155 min</div>
-//                                 <div class="text-sm text-gray-400">Runtime:</div>
-//                             </div>
-//                         </div>
-//                         <div class="flex flex-col overview">
-//                             <div class="flex flex-col"></div>
-//                             <div class="text-xs text-gray-400 mb-2">Overview:</div>
-//                             <p class="text-xs text-gray-100 mb-6">
-//                                 Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As
-//                                 malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their
-//                                 fear will survive.
-//                             </p>
-//                         </div>
-//                     </div>
-//                     <div data-countdown="2021-09-15" class="absolute inset-x-0 top-0 pt-5 w-full mx-auto text-2xl uppercase text-center drop-shadow-sm font-bold text-white">00 Days 00:00:00</div>
-//                 </div>
-//             </div>
-//             <img class="absolute inset-0 transform w-full -translate-y-4" src="http://image.tmdb.org/t/p/w342/s1FhMAr91WL8D5DeHOcuBELtiHJ.jpg" style="filter: grayscale(0);" />
-//             <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
-//                 <a
-//                     class="flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
-//                     href="http://www.google.com/calendar/event?action=TEMPLATE&amp;dates=20210915T010000Z%2F20210915T010000Z&amp;text=Dune%20%2D%20Movie%20Premiere&amp;location=http%3A%2F%2Fmoviedates.info&amp;details=This%20reminder%20was%20created%20through%20http%3A%2F%2Fmoviedates.info"
-//                     target="_blank"
-//                     data-unsp-sanitized="clean"
-//                 >
-//                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-//                     </svg>
-//                     <div class="text-sm text-white ml-2">Set reminder</div>
-//                 </a>
-//             </div>
-//         </div>
-
-//             </div>
-//         </div>
-//     </div>
 
 
 

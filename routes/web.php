@@ -34,10 +34,13 @@ Route::get('/main',[PostController::class,'ShowMain'])->name('showmain');
 Route::get('/search',[PostController::class,'ShowSearch'])->name('showsearch');
 Route::get('/search/{searchword}',[PostController::class,'SearchNow']);
 Route::get('/search/api/{searchword}',[ApiController::class,'NaverApiCall']);
+
 Route::get('/room/{room_id}',[PostController::class,'ShowRoom']);
 
-
+Route::post('/comment/info/{room_id}',[PostController::class,'CommentInfo']);
 Route::post('/post/comment/{room_id}',[PostController::class,'PostComment']);
+Route::post('/api/call/text',[ApiController::class,'TextApiCall']);
+Route::post('/show/comments',[PostController::class,'ShowComments']);
 Route::post('/show/room/{movie_title}',[PostController::class,'PostShowRoom']);
 Route::post('/make/room',[PostController::class,'MakeRoom']);
 Route::post('/room/info/{room_id}',[PostController::class,'RoomInfo']);

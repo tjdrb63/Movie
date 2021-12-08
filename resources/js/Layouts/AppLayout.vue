@@ -1,9 +1,7 @@
 <template>
     <div>
         <Head :title="title" />
-
         <jet-banner />
-
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -28,7 +26,6 @@
                                 <jet-nav-link :href="route('showsearch')" :active="route().current('showsearch')">
                                     영화 검색하기
                                 </jet-nav-link>
-
                             </div>
                         </div>
 
@@ -160,7 +157,6 @@
                             <div v-if="$page.props.jetstream.managesProfilePhotos" class="flex-shrink-0 mr-3" >
                                 <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
                             </div>
-
                             <div>
                                 <div class="font-medium text-base text-gray-800">{{ $page.props.user.name }}</div>
                                 <div class="font-medium text-sm text-gray-500">{{ $page.props.user.email }}</div>

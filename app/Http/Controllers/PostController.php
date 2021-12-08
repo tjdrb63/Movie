@@ -45,10 +45,24 @@ class PostController extends Controller
     public function PostComment(Request $request,$room_id){
         $comment = new Comment;
         $comment -> user_id = Auth::id();
+        $comment -> user_name = Auth::user()->name;
+        // $comment -> user_imagePath = Auth::user()->profile_photo_path;
+        $image =Auth::user()->profile_photo_path;
+        $comment -> user_imagePath = '/storage/'.$image;
         $comment -> movie_id = $room_id;
         $comment -> comment = $request ->comment_content;
         $comment -> rating = $request ->comment_rating;
         $comment -> save();
+
+        $movie = Movie::find($room_id);
+        $movieRating = $movie -> totalRating;
+        $movieRating += $request->comment_rating;
+        $movieCount = $movie -> ratingCount;
+        $movieCount += 1;
+        $movie -> totalRating = $movieRating;
+        $movie -> ratingCount = $movieCount;
+        $movie->save();
+
     }
     public function PostShowRoom($movie_title){
         $movie = DB::table('movies')->where('title',"=",$movie_title)->first();
@@ -57,5 +71,20 @@ class PostController extends Controller
     public function MainShowMovie(){
         $movies = DB::table('movies')->orderBy('updated_at','desc')->take(10)->get();
         return $movies;
+    }
+    public function CommentInfo($room_id){
+        $comments = DB::table('comments')->where("movie_id","=",$room_id)->latest()->paginate(6);
+        return $comments;
+    }
+    public function ShowComments()
+    {
+        $comments = DB::table('comments')->orderBy('created_at','desc')->take(5)->get();
+        for($i=0;$i<5;$i++){
+            $movie_info = DB::table('movies')->where("id","=",$comments[$i]->movie_id)->get();
+            $comments[$i] -> movie_info = $movie_info;
+        }
+        return $comments;
+
+
     }
 }

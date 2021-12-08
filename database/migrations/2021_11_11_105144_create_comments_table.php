@@ -17,6 +17,8 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("movie_id")->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->String("user_name")->nullable();
+            $table->String("user_imagePath")->nullable();
             $table->String("comment");
             $table->float("rating");
             $table->timestamps();

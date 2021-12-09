@@ -1,11 +1,11 @@
 <template>
-    <app-layout title="Profile">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
-            </h2>
-        </template>
-
+        <nav id="nav">
+            <ul>
+                <li ><a href="/main">메인페이지</a></li>
+                <li><a href="/search">영화 검색</a></li>
+                <li class="current"><a :href="route('profile.show')">내 정보</a></li>
+            </ul>
+        </nav>
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
@@ -35,8 +35,11 @@
                 </template>
             </div>
         </div>
-    </app-layout>
 </template>
+
+<style>
+    @import '../movie/css/main.css';
+</style>
 
 <script>
     import { defineComponent } from 'vue'

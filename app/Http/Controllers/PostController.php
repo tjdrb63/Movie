@@ -48,7 +48,11 @@ class PostController extends Controller
         $comment -> user_name = Auth::user()->name;
         // $comment -> user_imagePath = Auth::user()->profile_photo_path;
         $image =Auth::user()->profile_photo_path;
-        $comment -> user_imagePath = '/storage/'.$image;
+        if(!$image)
+            $comment->user_imagePath="../images/null.jpg";
+        else
+            $comment -> user_imagePath = '/storage/'.$image;
+
         $comment -> movie_id = $room_id;
         $comment -> comment = $request ->comment_content;
         $comment -> rating = $request ->comment_rating;
@@ -78,13 +82,53 @@ class PostController extends Controller
     }
     public function ShowComments()
     {
-        $comments = DB::table('comments')->orderBy('created_at','desc')->take(5)->get();
-        for($i=0;$i<5;$i++){
-            $movie_info = DB::table('movies')->where("id","=",$comments[$i]->movie_id)->get();
-            $comments[$i] -> movie_info = $movie_info;
+        $comments = DB::table('comments')->orderBy('created_at','desc')->take(10)->get();
+        $len = count($comments);
+        for($i=0;$i<$len;$i++){
+                $movie_info = DB::table('movies')->where("id","=",$comments[$i]->movie_id)->get();
+                $comments[$i] -> movie_info = $movie_info;
+
         }
         return $comments;
 
 
+    }
+    public function CheckComment($movie_id){
+        $myId = Auth::id();
+        $comment = DB::table('comments')->where([
+            ["user_id","=",$myId],
+            ["movie_id","=",$movie_id]
+        ])->get();
+
+        return $comment;
+    }
+    public function EditComment(Request $request,$comment_id){
+        $comment = Comment::find($comment_id);
+        $original =$comment->rating;
+        $comment->comment = $request -> comment;
+        $comment->rating = $request -> rating ;
+        $comment->save();
+
+        $movie = Movie::find($request -> room_id);
+        $movieRating = $movie -> totalRating;
+        $movieRating -= $original;
+        $movieRating += $request->rating;
+        $movie -> totalRating = $movieRating;
+        $movie->save();
+
+        return $comment;
+    }
+    public function DeleteComment($comment_id){
+        $comment = Comment::find($comment_id);
+        $rating = $comment -> rating;
+        $movie = Movie::find($comment -> movie_id);
+        $movieRating = $movie -> totalRating;
+        $movieRating -= $rating;
+        $movie->totalRating=$movieRating;
+        $movie -> ratingCount -= 1;
+
+        $movie->save();
+
+        $comment->delete();
     }
 }

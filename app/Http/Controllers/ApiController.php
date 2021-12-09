@@ -82,10 +82,18 @@ class ApiController extends Controller
                 $json->items[$i]->subtitle = $change_subtitle;
                 //이미 있는 방인지 검사
                 $movies = DB::table('movies')->where('title',$json->items[$i]->title)->first();
-                if($movies)
+
+                if($movies){
+                    $totalRating = $movies -> totalRating;
+                    $ratingCount = $movies -> ratingCount;
+                    $json->items[$i]->siteRating = ($totalRating/$ratingCount);
                     $json->items[$i]->isOn=true;
-                else
+                }
+                else{
+                    $json->items[$i]->siteRating = 0;
                     $json->items[$i]->isOn=false;
+                }
+
 
             }
             //     $movie  = new Movie;
